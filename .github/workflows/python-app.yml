@@ -31,7 +31,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test with pytest
       run: |                #src
-        export PYTHONPATH='C:\Users\nikgo\Documents\Work\Lamel_project_copy\src'
+        export PYTHONPATH='/home/runner/work/Lamel_project_copy/Lamel_project_copysrc'
         pip install pytest
         pip install pytest-cov
         pip install numpy 
