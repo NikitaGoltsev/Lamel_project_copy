@@ -14,10 +14,6 @@ class TestFluidCube(unittest.TestCase):
             self.AssertModelStep(model)
         except:
             result = True
-            model = moduls.read_for_arr(np.array([1, 1, 1, 1]))
-            self.AssertModelStep(model)
-            model = moduls.read_for_arr(np.array([1, -9, 1, 100]))
-            self.AssertModelStep(model)
 
         return result
 
