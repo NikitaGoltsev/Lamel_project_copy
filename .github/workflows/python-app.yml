@@ -10,14 +10,12 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
+  build-windows:
+    runs-on: windows-2019
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.10"]
-
+        python-version: ["3.10"]
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
@@ -28,15 +26,39 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Test with pytest
-      run: |                #src
-        export PYTHONPATH='/home/runner/work/Lamel_project_copy/Lamel_project_copy/src'
-        pip install pytest
-        pip install pytest-cov
-        pip install numpy 
-        pip install matplotlib
-        pip install pandas
-        pytest src/test/
-        pytest --cov src/test/
+        python -m pip install pyinstaller
+        python -m pip install -r requirements.txt
+    - name: Run Test's
+      run: |
+        python src/test/test_exemple.py
+    - name: Run PyInstaller
+      run: |
+        python -m PyInstaller -w --onefile --add-data "assets;assets" src/main.py --name "RGB BoardDrawer"
+    - uses: actions/upload-artifact@v2
+      with:
+          name: Windows_RGB BoardDrawer
+          path: "dist/RGB BoardDrawer.exe"
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: "Window_for_lamelgraph${{ github.event.head_commit.id }}"
+        release_name: " Lamel ${{ github.event.head_commit.message }})"
+        overwrite: true
+        body: |
+          Release windows version
+        draft: false
+        prerelease: false
+    - name: Upload Release Asset
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{steps.create_release.outputs.upload_url}}
+        asset_path: "dist/RGB BoardDrawer.exe"
+        asset_name: "RGB BoardDrawer.exe"
+        asset_content_type: application/zip
         
