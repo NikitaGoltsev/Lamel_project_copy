@@ -6,8 +6,8 @@ COPY requirements.txt /./
 
 RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
 
-RUN pip install --no-cache-dir -r reqr.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY rewrite_for_file ./rewrite_for_file
+COPY src ./src
 
-CMD ["python", "rewrite_for_file/main.py"]
+CMD ["python", "src/Lamel_window/main.py"]
