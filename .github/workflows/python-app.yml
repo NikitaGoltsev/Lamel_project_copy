@@ -30,14 +30,14 @@ jobs:
         python -m pip install -r requirements.txt
     - name: Run Test's
       run: |
-        python ./src/test/test_exemple.py
+        python /src/test/test_exemple.py
     - name: Run PyInstaller
       run: |
-        python -m PyInstaller -w --onefile --add-data "assets;assets" src/main.py --name "RGB BoardDrawer"
+        python -m PyInstaller -w --onefile --add-data "assets;assets" src/main.py --name "Lamel graph"
     - uses: actions/upload-artifact@v2
       with:
-          name: Windows_RGB BoardDrawer
-          path: "dist/RGB BoardDrawer.exe"
+          name: Windows_RGB Lamel_Window
+          path: "dist/RGB Lamel.exe"
     - name: Create release
       id: create_release
       uses: actions/create-release@v1
@@ -58,7 +58,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{steps.create_release.outputs.upload_url}}
-        asset_path: "dist/RGB BoardDrawer.exe"
-        asset_name: "RGB BoardDrawer.exe"
+        asset_path: "dist/RGB Lamel.exe"
+        asset_name: "RGB Lamel.exe"
         asset_content_type: application/zip
         
