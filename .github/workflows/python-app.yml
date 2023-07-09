@@ -30,13 +30,13 @@ jobs:
         python -m pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test with pytest
-      run: |
-        export PYTHONPATH='/home/runner/work/Plot-digitization/Plot-digitization/plotscanner/'
+      run: |                #src
+        export PYTHONPATH='C:\Users\nikgo\Documents\Work\Lamel_project_copy\src'
         pip install pytest
         pip install pytest-cov
         pip install numpy 
         pip install matplotlib
         pip install pandas
-        pytest tests/
-        pytest --cov tests/
+        pytest test/
+        pytest --cov test/
         
