@@ -37,7 +37,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
           name: Windows_RGB Lamel_Window
-          path: "dist/RGB Lamel.exe"
+          path: "src/Lamel_Window proccesing.py"
     - name: Create release
       id: create_release
       uses: actions/create-release@v1
@@ -46,7 +46,7 @@ jobs:
       with:
         tag_name: "Window_for_lamelgraph${{ github.event.head_commit.id }}"
         release_name: " Lamel_Window ${{ github.event.head_commit.message }})"
-        overwrite: true
+        #overwrite: true
         body: |
           Release windows version
         draft: false
@@ -58,7 +58,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{steps.create_release.outputs.upload_url}}
-        asset_path: "dist/RGB Lamel.exe"
-        asset_name: "RGB Lamel.exe"
+        asset_path: "src/Lamel_Window proccesing.p"
+        asset_name: "Lamel_Window Lamel.exe"
         asset_content_type: application/zip
         
