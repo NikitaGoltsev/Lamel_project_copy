@@ -31,7 +31,7 @@ jobs:
         python -m pip install -r requirements.txt
     #- name: Run Test's
       #run: |
-        #python \src\test\test_example.py
+        #python ./src/test/test_example.py
     - name: Run PyInstaller
       run: |
         python -m PyInstaller -w ./src/Lamel_window/proccesing.py --name "Lamel graph"
@@ -59,7 +59,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{steps.create_release.outputs.upload_url}}
-        asset_path: "src/Lamel_Window proccesing.py"
+        #asset_path: "src/Lamel_Window proccesing.py"
         asset_name: "Lamel_Window Lamel.exe"
         asset_content_type: application/zip
         
