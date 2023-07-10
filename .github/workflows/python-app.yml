@@ -46,7 +46,7 @@ jobs:
       with:
         tag_name: "Window_for_lamelgraph${{ github.event.head_commit.id }}"
         release_name: " Lamel ${{ github.event.head_commit.message }})"
-        overwrite: true
+        #overwrite: true
         body: |
           Release windows version
         draft: false
