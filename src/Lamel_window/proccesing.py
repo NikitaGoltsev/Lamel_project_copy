@@ -52,7 +52,7 @@ class Analyse_For_Res():
         # Maybe here I will use hparam
         self.mid_mlt = x
         return None
-    # Output for results , return pair of np.int
+
     def get_result(self, arr: np.ndarray, point: int, median: float):
         # Output for results , return pair of np.int
         self.narr = arr

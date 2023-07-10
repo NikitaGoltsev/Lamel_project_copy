@@ -38,7 +38,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
           name: Windows_RGB Lamel_Window
-          path: "src/Lamel_Window proccesing.py"
+          path: "src/Lamel_window proccesing.py"
     - name: Create release
       id: create_release
       uses: actions/create-release@v1
@@ -59,7 +59,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{steps.create_release.outputs.upload_url}}
-        #asset_path: "src/Lamel_Window proccesing.py"
+        asset_path: "src/Lamel_window proccesing.py"
         asset_name: "Lamel_Window Lamel.exe"
         asset_content_type: application/zip
         
