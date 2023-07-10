@@ -33,7 +33,7 @@ jobs:
         #python \src\test\test_example.py
     - name: Run PyInstaller
       run: |
-        python -m PyInstaller -w ./src/Lamel_window/main.py --name "Lamel graph"
+        python -m PyInstaller -w ./src/Lamel_window/proccesing.py --name "Lamel graph"
     - uses: actions/upload-artifact@v2
       with:
           name: Windows_RGB Lamel_Window
@@ -45,8 +45,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: "Window_for_lamelgraph${{ github.event.head_commit.id }}"
-        release_name: " Lamel ${{ github.event.head_commit.message }})"
-        #overwrite: true
+        release_name: " Lamel_Window ${{ github.event.head_commit.message }})"
+        overwrite: true
         body: |
           Release windows version
         draft: false
