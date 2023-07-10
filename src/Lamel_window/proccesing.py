@@ -52,9 +52,9 @@ class Analyse_For_Res():
         # Maybe here I will use hparam
         self.mid_mlt = x
         return None
-
+    # Output for results , return pair of np.int
     def get_result(self, arr: np.ndarray, point: int, median: float):
-
+        # Output for results , return pair of np.int
         self.narr = arr
         self.peak = point
         self.median = median * self.mid_mlt
@@ -65,7 +65,7 @@ class Analyse_For_Res():
         return x, y
 
     def __find_bg_from_p__(self) -> int:
-
+        # To find first peak in array
         result = self.peak
 
         while (True):
@@ -75,6 +75,7 @@ class Analyse_For_Res():
         return result
 
     def __find_nd_from_p__(self) -> int:
+        # To next peak's in array
         result = self.peak
         while (True):
             result += 1
